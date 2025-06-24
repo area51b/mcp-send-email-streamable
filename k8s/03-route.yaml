@@ -1,12 +1,12 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: mcp-server
+  name: mcp-send-email
   namespace: mcp-servers
 spec:
   to:
     kind: Service
-    name: mcp-server
+    name: mcp-send-email
   port:
     targetPort: 80
-  host: mcp-server.apps.<DOMAIN>
+  host: mcp-send-email.apps.<DOMAIN>

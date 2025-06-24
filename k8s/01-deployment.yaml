@@ -1,23 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mcp-server
+  name: mcp-send-email
   namespace: mcp-servers
   labels:
-    app: mcp-server
+    app: mcp-send-email
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mcp-server
+      app: mcp-send-email
   template:
     metadata:
       labels:
-        app: mcp-server
+        app: mcp-send-email
     spec:
       containers:
-        - name: mcp-server
-          image: mcp-server:latest
+        - name: mcp-send-email
+          image: mcp-send-email:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8001
+          env:
+            - name: RESEND_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: resend-api-secret
+                  key: RESEND_API_KEY

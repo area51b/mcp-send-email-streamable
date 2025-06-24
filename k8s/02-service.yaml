@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mcp-server
+  name: mcp-send-email
   namespace: mcp-servers
   labels:
-    app: mcp-server
+    app: mcp-send-email
 spec:
   selector:
-    app: mcp-server
+    app: mcp-send-email
   ports:
     - protocol: TCP
       port: 80
